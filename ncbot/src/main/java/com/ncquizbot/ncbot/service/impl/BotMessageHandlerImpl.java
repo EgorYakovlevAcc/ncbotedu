@@ -94,7 +94,7 @@ public class BotMessageHandlerImpl implements BotMessageHandler {
 //                    keyboardRow.add(keyboardButton);
 //                    keyboardRowList.add(keyboardRow);
 //                    replyKeyboardMarkup.setKeyboard(keyboardRowList);
-                    return getSendMessageForBot(ouputMessageText, message, replyKeyboardMarkup);
+                    return getSendMessageForBot(ouputMessageText, message, replyKeyboardMarkup).setParseMode(ParseMode.HTML);
                 } else {
                     if (nextQuestion.getOptions().size() > 1) {
                         replyKeyboardMarkup = getQuestionWithMultipleOptions(nextQuestion.getOptions());
