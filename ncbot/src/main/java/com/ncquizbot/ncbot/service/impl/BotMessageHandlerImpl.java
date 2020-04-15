@@ -41,12 +41,12 @@ public class BotMessageHandlerImpl implements BotMessageHandler {
             "И сегодня у тебя есть шанс проверить свои знания и логику перед зачислением на кафедру ИСС и компании Netcracker.\n" +
             "После прохождения всех заданий ты увидишь количество набранных баллов.\n" +
             "Удачи! &#128521;";
-    public static final String GOODBYE_MESSAGE = "\nСпасибо за прохождение нашего квиза. Надеюсь, это было познавательно &#128512\n" +
+    public static final String GOODBYE_MESSAGE = "\nСпасибо за прохождение нашего квиза. Надеюсь, это было познавательно &#128512;\n" +
             "Начиная с 20 апреля, мы начнем приглашать студентов на собеседования.\n" +
             "Обращаем внимание, что отбор на кафедру проходит на конкурсной основе.\n" +
             "По всем вопросам можно обращаться к нам по почте: EduCenter@NetCracker.com";
     public static final String USER_SCORE = "Спасибо! Это был последний вопрос. Твой результат: ";
-    public static final String COMMAND_PRESENT = "present";
+    //public static final String COMMAND_PRESENT = "present";
     public static final String COMMAND_GO = "go";
     public static final String FINISH_GAME = "You have finished your game! We will happy to meet you at another time";
     @Autowired
@@ -70,13 +70,13 @@ public class BotMessageHandlerImpl implements BotMessageHandler {
             if (message.getText().equals(COMMAND_GO)) {
                 userService.setActiveStatusTrue(user);
             }
-            if (message.getText().equals(COMMAND_PRESENT)) {
-                if (user.isGameOver()) {
-                    if (!user.isPresentGiven()) {
-                        return getQrCodeImageForPresent(user);
-                    }
-                }
-            }
+//            if (message.getText().equals(COMMAND_PRESENT)) {
+//                if (user.isGameOver()) {
+//                    if (!user.isPresentGiven()) {
+//                        return getQrCodeImageForPresent(user);
+//                    }
+//                }
+//            }
             if (user.isActiveNow()) {
                 userService.updateLastUserSessionDate(user);
                 if (user.getQuestionNumber() > 0) {
@@ -85,15 +85,15 @@ public class BotMessageHandlerImpl implements BotMessageHandler {
                 Question nextQuestion = getQuestionForUser(user);
                 if (user.getQuestionNumber() > 5 || Objects.isNull(nextQuestion)) {
                     ouputMessageText = getGoodByeMessage(user);
-                    replyKeyboardMarkup = new ReplyKeyboardMarkup();
-                    replyKeyboardMarkup.setOneTimeKeyboard(true);
-                    List<KeyboardRow> keyboardRowList = new ArrayList<>();
-                    KeyboardRow keyboardRow = new KeyboardRow();
-                    KeyboardButton keyboardButton = new KeyboardButton();
-                    keyboardButton.setText(COMMAND_PRESENT);
-                    keyboardRow.add(keyboardButton);
-                    keyboardRowList.add(keyboardRow);
-                    replyKeyboardMarkup.setKeyboard(keyboardRowList);
+//                    replyKeyboardMarkup = new ReplyKeyboardMarkup();
+//                    replyKeyboardMarkup.setOneTimeKeyboard(true);
+//                    List<KeyboardRow> keyboardRowList = new ArrayList<>();
+//                    KeyboardRow keyboardRow = new KeyboardRow();
+//                    KeyboardButton keyboardButton = new KeyboardButton();
+//                    keyboardButton.setText(COMMAND_PRESENT);
+//                    keyboardRow.add(keyboardButton);
+//                    keyboardRowList.add(keyboardRow);
+//                    replyKeyboardMarkup.setKeyboard(keyboardRowList);
                     return getSendMessageForBot(ouputMessageText, message, replyKeyboardMarkup);
                 } else {
                     if (nextQuestion.getOptions().size() > 1) {
