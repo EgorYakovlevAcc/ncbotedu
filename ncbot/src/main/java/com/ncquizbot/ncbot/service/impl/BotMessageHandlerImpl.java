@@ -36,15 +36,16 @@ import java.util.Objects;
 public class BotMessageHandlerImpl implements BotMessageHandler {
     private static final Logger LOGGER = LoggerFactory.getLogger(Bot.class);
     private static final String HELLO_MESSAGE = "Привет! \n" +
-            "Давай знакомиться &#128512; \n" +
-            "Я – телеграм бот компании Netcracker. \n" +
-            "И сегодня у тебя есть шанс проверить свои знания и логику, а также получить призы от нас. \n" +
-            "После прохождения всех заданий обязательно подходи к стенду Netcracker за призом. \n" +
-            "Обращаем внимание, что приятные подарочки получат самые быстрые из вас! &#128521;";
-    public static final String GOODBYE_MESSAGE = "\nОбменять полученные баллы на призы можно у стенда Netcracker на Найти ИТ уже сейчас. \n" +
-            "Если ты хочешь начать карьеру в IT-сфере, то подавай заявку до 31 марта на бесплатное обучение у нас: http://msk.edu-netcracker.com. \n" +
-            "Учебный Центр Netcracker проводит курсы по таким направлениям как Enterprise Development, Business Analysis, Technical Sales, Devops и т.д.";
-    public static final String USER_SCORE = "Thank you it was last question. Your score is ";
+            "Давай знакомиться &#128512 \n" +
+            "Я – телеграм бот компании Netcracker.\n" +
+            "И сегодня у тебя есть шанс проверить свои знания и логику перед зачислением на кафедру ИСС и компании Netcracker.\n" +
+            "После прохождения всех заданий ты увидишь количество набранных баллов.\n" +
+            "Удачи! &#128521;";
+    public static final String GOODBYE_MESSAGE = "\nСпасибо за прохождение нашего квиза. Надеюсь, это было познавательно &#128512\n" +
+            "Начиная с 20 апреля, мы начнем приглашать студентов на собеседования.\n" +
+            "Обращаем внимание, что отбор на кафедру проходит на конкурсной основе.\n" +
+            "По всем вопросам можно обращаться к нам по почте: EduCenter@NetCracker.com";
+    public static final String USER_SCORE = "Спасибо! Это был последний вопрос. Твой результат: ";
     public static final String COMMAND_PRESENT = "present";
     public static final String COMMAND_GO = "go";
     public static final String FINISH_GAME = "You have finished your game! We will happy to meet you at another time";
