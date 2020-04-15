@@ -1,0 +1,52 @@
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th>
+      №
+    </th>
+    <th>
+      telegram id
+    </th>
+    <th>
+      first name
+    </th>
+    <th>
+      last name
+    </th>
+    <th>
+      user name
+    </th>
+    <th>
+      score
+    </th>
+    <th>
+      is present given
+    </th>
+  </tr>
+  </thead>
+  <tbody *ngFor="let user of users; let i = index">
+  <tr [ngStyle]="{'background-color':user.color}">
+    <td>
+      {{i}}
+    </td>
+    <td>
+      {{user.telegramId}}
+    </td>
+    <td>
+      {{user.firstName}}
+    </td>
+    <td>
+      {{user.lastName}}
+    </td>
+    <td>
+      {{user.username}}
+    </td>
+    <td>
+      {{user.score}}
+    </td>
+    <td>
+      <button class="badge-info" (click)="givePresentToUser(user.id)" [disabled]="user.presentGiven">give present</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
