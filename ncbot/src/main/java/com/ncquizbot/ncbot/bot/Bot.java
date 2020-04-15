@@ -53,12 +53,12 @@ public class Bot extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "netcracker_quiz_bot";
+        return "ncEduQuizBot";
     }
 
     @Override
     public String getBotToken() {
-        return "827026140:AAECQOwWUsWYkygsr89VNo0DeHWhWr_Lml4";
+        return "1179998676:AAFhNKEYyZWaIuZkVoTJcg070yjiZk0hrGA";
     }
 
     public boolean getIsBotActive() {
