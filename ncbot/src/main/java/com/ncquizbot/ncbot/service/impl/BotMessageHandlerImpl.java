@@ -123,6 +123,16 @@ public class BotMessageHandlerImpl implements BotMessageHandler {
                 else {
                     String realName = message.getText();
                     userService.setRealNameForUser(user, realName);
+                    ouputMessageText = GO_MESSAGE;
+                    replyKeyboardMarkup = new ReplyKeyboardMarkup();
+                    replyKeyboardMarkup.setOneTimeKeyboard(true);
+                    List<KeyboardRow> keyboardRowList = new ArrayList<>();
+                    KeyboardRow keyboardRow = new KeyboardRow();
+                    KeyboardButton keyboardButton = new KeyboardButton();
+                    keyboardButton.setText(COMMAND_GO);
+                    keyboardRow.add(keyboardButton);
+                    keyboardRowList.add(keyboardRow);
+                    replyKeyboardMarkup.setKeyboard(keyboardRowList);
                 }
                 return getSendMessageForBot(ouputMessageText, message, replyKeyboardMarkup).setParseMode(ParseMode.HTML);
             } else {
