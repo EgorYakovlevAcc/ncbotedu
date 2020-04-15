@@ -38,19 +38,19 @@ public class BotMessageHandlerImpl implements BotMessageHandler {
     private static final String HELLO_MESSAGE = "Привет! \n" +
             "Давай знакомиться &#128512 \n" +
             "Я – телеграм бот компании Netcracker.\n" +
-            "И сегодня у тебя есть шанс проверить свои знания и логику перед зачислением на кафедру ИСС и компанию Netcracker.\n" +
+            "И сегодня у тебя есть шанс проверить свои знания и логику перед зачислением на кафедру ИСС от компании Netcracker.\n" +
             "После прохождения всех заданий ты увидишь количество набранных баллов.\n" +
             "Удачи! &#128521;";
     public static final String GOODBYE_MESSAGE = "\nСпасибо за прохождение нашего квиза. Надеюсь, это было познавательно &#128512;\n" +
             "Начиная с 20 апреля, мы начнем приглашать студентов на собеседования.\n" +
             "Обращаем внимание, что отбор на кафедру проходит на конкурсной основе.\n" +
-            "По всем вопросам можно обращаться к нам по почте: EduCenter@NetCracker.com";
+            "По всем вопросам можно обращаться к нам по почте: MIPTCenter@NetCracker.com";
     public static final String USER_SCORE = "Спасибо! Это был последний вопрос. Твой результат: ";
     //public static final String COMMAND_PRESENT = "present";
     public static final String COMMAND_GO = "go";
     public static final String COMMAND_NAME = "name";
     public static final String FINISH_GAME = "You have finished your game! We will happy to meet you at another time";
-    public static final String NAME_MESSAGE = "Давай знакомиться, напиши свои имя, фамилию и отчество";
+    public static final String NAME_MESSAGE = "Как тебя зовут (ФИО)?";
     public static final String GO_MESSAGE = "Вот всё и готово. Если ты готов начать, нажми кнопку go";
     @Autowired
     private UserService userService;
