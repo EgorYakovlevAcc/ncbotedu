@@ -19,6 +19,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    private String fullRealName;
     private Integer telegramId;
     private Long chatId;
     private String firstName;

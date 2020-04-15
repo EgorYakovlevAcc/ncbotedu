@@ -38,7 +38,7 @@ public class BotMessageHandlerImpl implements BotMessageHandler {
     private static final String HELLO_MESSAGE = "Привет! \n" +
             "Давай знакомиться &#128512 \n" +
             "Я – телеграм бот компании Netcracker.\n" +
-            "И сегодня у тебя есть шанс проверить свои знания и логику перед зачислением на кафедру ИСС и компании Netcracker.\n" +
+            "И сегодня у тебя есть шанс проверить свои знания и логику перед зачислением на кафедру ИСС и компанию Netcracker.\n" +
             "После прохождения всех заданий ты увидишь количество набранных баллов.\n" +
             "Удачи! &#128521;";
     public static final String GOODBYE_MESSAGE = "\nСпасибо за прохождение нашего квиза. Надеюсь, это было познавательно &#128512;\n" +
@@ -48,7 +48,10 @@ public class BotMessageHandlerImpl implements BotMessageHandler {
     public static final String USER_SCORE = "Спасибо! Это был последний вопрос. Твой результат: ";
     //public static final String COMMAND_PRESENT = "present";
     public static final String COMMAND_GO = "go";
+    public static final String COMMAND_NAME = "name";
     public static final String FINISH_GAME = "You have finished your game! We will happy to meet you at another time";
+    public static final String NAME_MESSAGE = "Давай знакомиться, напиши свои имя, фамилию и отчество";
+    public static final String GO_MESSAGE = "Вот всё и готово. Если ты готов начать, нажми кнопку go";
     @Autowired
     private UserService userService;
     @Autowired
@@ -102,16 +105,25 @@ public class BotMessageHandlerImpl implements BotMessageHandler {
                     ouputMessageText = nextQuestion.getContent();
                 }
             } else if (!user.isGameOver()) {
-                ouputMessageText = HELLO_MESSAGE;
-                replyKeyboardMarkup = new ReplyKeyboardMarkup();
-                replyKeyboardMarkup.setOneTimeKeyboard(true);
-                List<KeyboardRow> keyboardRowList = new ArrayList<>();
-                KeyboardRow keyboardRow = new KeyboardRow();
-                KeyboardButton keyboardButton = new KeyboardButton();
-                keyboardButton.setText(COMMAND_GO);
-                keyboardRow.add(keyboardButton);
-                keyboardRowList.add(keyboardRow);
-                replyKeyboardMarkup.setKeyboard(keyboardRowList);
+                if (message.getText().equals(COMMAND_NAME)) {
+                    ouputMessageText = NAME_MESSAGE;
+                }
+                else if (message.getText().equals("/start")){
+                    ouputMessageText = HELLO_MESSAGE;
+                    replyKeyboardMarkup = new ReplyKeyboardMarkup();
+                    replyKeyboardMarkup.setOneTimeKeyboard(true);
+                    List<KeyboardRow> keyboardRowList = new ArrayList<>();
+                    KeyboardRow keyboardRow = new KeyboardRow();
+                    KeyboardButton keyboardButton = new KeyboardButton();
+                    keyboardButton.setText(COMMAND_NAME);
+                    keyboardRow.add(keyboardButton);
+                    keyboardRowList.add(keyboardRow);
+                    replyKeyboardMarkup.setKeyboard(keyboardRowList);
+                }
+                else {
+                    String realName = message.getText();
+                    userService.setRealNameForUser(user, realName);
+                }
                 return getSendMessageForBot(ouputMessageText, message, replyKeyboardMarkup).setParseMode(ParseMode.HTML);
             } else {
                 ouputMessageText = FINISH_GAME;

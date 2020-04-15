@@ -9,4 +9,5 @@ export class User {
   color:string;
   presentGiven:boolean;
   status:boolean;
+  fullRealName:string;
 }

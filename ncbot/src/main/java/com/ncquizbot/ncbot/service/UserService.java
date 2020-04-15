@@ -26,4 +26,6 @@ public interface UserService {
     List<User> findUsersByIsPresentGiven(boolean isPresentGiven);
     void givePresentToUser(User user);
     List<User> findUsersByScoreBetweenAndIsPresentGiven(Integer startScore, Integer endScore, boolean isPresentGiven);
+
+    void setRealNameForUser(User user, String realName);
 }

@@ -154,4 +154,11 @@ public class UserServiceImpl implements UserService {
                 .filter(user -> (user.getScore() > startScore) && (user.getScore() < endScore))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public void setRealNameForUser(User user, String realName) {
+        user.setFullRealName(realName);
+        userRepository.save(user);
+    }
+
 }
