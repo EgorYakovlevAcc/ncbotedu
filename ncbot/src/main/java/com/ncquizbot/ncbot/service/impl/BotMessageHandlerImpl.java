@@ -41,10 +41,17 @@ public class BotMessageHandlerImpl implements BotMessageHandler {
             "И сегодня у тебя есть шанс проверить свои знания и логику перед зачислением на кафедру ИСС от компании Netcracker.\n" +
             "После прохождения всех заданий ты увидишь количество набранных баллов.\n" +
             "Удачи! &#128521;";
-    public static final String GOODBYE_MESSAGE = "\nСпасибо за прохождение нашего квиза. Надеюсь, это было познавательно &#128512;\n" +
-            "Начиная с 20 апреля, мы начнем приглашать студентов на собеседования.\n" +
-            "Обращаем внимание, что отбор на кафедру проходит на конкурсной основе.\n" +
-            "По всем вопросам можно обращаться к нам по почте: MIPTCenter@NetCracker.com";
+    public static final String GOODBYE_MESSAGE_TOP = "\nПоздравляем, у тебя прекрасный результат :)\n" +
+            "В качестве приза мы дарим тебе доступ к нашему курсу\n" +
+            "«Работа с базой данных в Java. Особенности и нюансы JDBC и ORM фреймворков и область их применения».\n" +
+            "https://www.youtube.com/playlist?list=PLByq0LGC2Dm9tT..\n" +
+            "Также будем рады видеть тебя среди студентов нашего Учебного Центра.\n" +
+            "Записаться можно тут https://msk.edu-netcracker.com";
+    public static final String GOODBYE_MESSAGE = "\nСпасибо за участие в квизе!\n" +
+            "К сожалению, мы не сможем подарить тебе наш приз.\n" +
+            "Но мы с радостью ждем тебя на наших курсах :)\n" +
+            "Учебный Центр Netcracker проводит обучение по направлениям Enterprise Development, Business Analysis, Technical Sales.\n" +
+            "Записаться можно тут https://msk.edu-netcracker.com";
     public static final String USER_SCORE = "Спасибо! Это был последний вопрос. Твой результат: ";
     //public static final String COMMAND_PRESENT = "present";
     public static final String COMMAND_GO = "go";
@@ -209,6 +216,9 @@ public class BotMessageHandlerImpl implements BotMessageHandler {
     }
 
     private String getGoodbyeMessage(Integer userScore) {
+        if (userScore >= 12) {
+            return USER_SCORE + userScore + GOODBYE_MESSAGE_TOP;
+        }
         return USER_SCORE + userScore + GOODBYE_MESSAGE;
     }
 }
