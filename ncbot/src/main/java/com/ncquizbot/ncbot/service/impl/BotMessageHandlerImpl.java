@@ -214,7 +214,7 @@ public class BotMessageHandlerImpl implements BotMessageHandler {
     }
 
     private String getGoodbyeMessage(Integer userScore) {
-        if (userScore >= 12) {
+        if (userScore >= 4) {
             return USER_SCORE + userScore + GOODBYE_MESSAGE_TOP;
         }
         return USER_SCORE + userScore + GOODBYE_MESSAGE;
